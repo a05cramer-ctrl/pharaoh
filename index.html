@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PHARAOH — buried with 110 kg of gold in 1323 BC. never sold.</title>
+<meta name="description" content="$PHARAOH paired with $GLD. sealed in with 110 kg of solid gold in 1323 BC. found in 1922 with all of it. still holding.">
+<meta property="og:title" content="PHARAOH — buried with 110 kg of gold in 1323 BC. never sold.">
+<meta property="og:description" content="$PHARAOH · paired with $GLD. the longest hold in history. market cap = how deep in the tomb.">
+<meta property="og:image" content="assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="assets/og.jpg">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#070502">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Special+Elite&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<style>
+:root{--bk:#070502;--gold:#f2b400;--gold2:#ffd86b;--gold3:#8a5d00;--lapis:#1c3f95;--lapis2:#3b6de0;--sand:#e9d8a6;--cream:#f6efdc;--mute:#a89a7a;--red:#c8102e;--head:"Cinzel",Georgia,serif;--type:"Special Elite","Courier New",monospace;--mono:"DM Mono",ui-monospace,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:clip;background:var(--bk);color:var(--cream)}
+body{font-family:var(--mono);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+h1,h2,h3{font-family:var(--head);font-weight:900;line-height:1;letter-spacing:.01em}
+button{font-family:inherit;background:transparent;border:0;color:inherit}
+.eyebrow{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold2);text-shadow:0 0 16px rgba(242,180,0,.5)}
+@media(pointer:fine){body,a,button,input,label{cursor:none}}
+/* ===== fixed layers ===== */
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+#pc{position:fixed;inset:0;width:100%;height:100%;z-index:6;pointer-events:none}
+#torchlight{position:fixed;inset:0;z-index:5;pointer-events:none;background:radial-gradient(560px 560px at var(--tx,50%) var(--ty,50%),rgba(242,180,0,.16),rgba(242,180,0,.05) 40%,transparent 70%);mix-blend-mode:screen}
+#grain{position:fixed;inset:-50%;width:200%;height:200%;z-index:7;pointer-events:none;opacity:.08;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");animation:grain .4s steps(4) infinite}
+@keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-4%,3%)}50%{transform:translate(3%,-2%)}75%{transform:translate(-2%,-4%)}100%{transform:translate(0,0)}}
+#curse{position:fixed;inset:0;z-index:50;pointer-events:none;background:radial-gradient(circle,transparent 30%,rgba(200,16,46,.55));opacity:0}
+#vignette{position:fixed;inset:0;z-index:4;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,transparent 45%,rgba(0,0,0,.85) 100%)}
+/* ===== torch cursor ===== */
+#torch{position:fixed;left:0;top:0;width:26px;height:26px;pointer-events:none;z-index:9999;display:none;will-change:transform}
+@media(pointer:fine){#torch{display:block}}
+#torch .fl{position:absolute;left:50%;top:50%;width:18px;height:26px;transform:translate(-50%,-70%);background:radial-gradient(ellipse at 50% 80%,#fff6c8 0%,#ffcf3d 35%,#ff7a00 65%,transparent 72%);border-radius:50% 50% 50% 50%/60% 60% 40% 40%;filter:blur(.6px);animation:flick .12s infinite alternate}
+#torch .st{position:absolute;left:50%;top:50%;width:6px;height:16px;transform:translate(-50%,10%);background:linear-gradient(#5a3a1a,#2a1a0a);border-radius:3px}
+#torch .glow{position:absolute;left:50%;top:50%;width:90px;height:90px;transform:translate(-50%,-60%);background:radial-gradient(circle,rgba(255,190,60,.45),transparent 65%);border-radius:50%;animation:flick .18s infinite alternate}
+@keyframes flick{from{transform:translate(-50%,-70%) scale(1) rotate(-3deg)}to{transform:translate(-50%,-70%) scale(1.15,1.25) rotate(3deg)}}
+/* ===== intro ===== */
+#intro{position:fixed;inset:0;z-index:900;background:#000;overflow:hidden}
+#intro canvas{position:absolute;inset:0;width:100%;height:100%}
+#intro .mask{position:absolute;inset:0;background:radial-gradient(360px 360px at var(--tx,50%) var(--ty,50%),transparent 0%,rgba(0,0,0,.35) 45%,rgba(0,0,0,.97) 75%)}
+#intro .door{position:absolute;left:50%;top:50%;width:min(52vmin,420px);aspect-ratio:3/4;transform:translate(-50%,-52%);z-index:3}
+#intro .door svg{width:100%;height:100%;filter:drop-shadow(0 30px 80px rgba(0,0,0,.8))}
+#intro .q{position:absolute;left:0;right:0;top:8%;text-align:center;font-family:var(--type);font-size:clamp(14px,2.2vw,22px);letter-spacing:.25em;text-transform:uppercase;color:var(--sand);z-index:4}
+#intro .q b{display:block;font-family:var(--head);font-weight:900;font-size:clamp(24px,5vw,56px);color:var(--gold2);letter-spacing:.05em;text-shadow:0 0 30px rgba(242,180,0,.5);margin-top:8px}
+#intro .yrs{position:absolute;left:0;right:0;bottom:9%;text-align:center;z-index:4;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute)}
+#intro .yrs b{display:block;font-family:var(--head);font-size:clamp(36px,7vw,84px);color:var(--cream);font-variant-numeric:tabular-nums;letter-spacing:.02em}
+#intro .hint{position:absolute;left:0;right:0;bottom:3%;text-align:center;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold2);z-index:4;animation:blink 1.4s steps(2) infinite}
+@keyframes blink{to{opacity:.2}}
+#intro .skip{position:absolute;top:22px;right:26px;font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--mute);z-index:6}
+#intro .tag{position:absolute;top:22px;left:26px;font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--mute);z-index:6}
+#intro .flash{position:absolute;inset:0;background:#ffe9a8;opacity:0;z-index:5;pointer-events:none}
+#intro .half{position:absolute;top:0;bottom:0;width:50%;background:#000;z-index:7;display:none}
+#intro .l{left:0}#intro .r{right:0}
+#intro .wow{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;z-index:6;opacity:0;pointer-events:none}
+#intro .wow small{display:block;font-family:var(--type);font-size:clamp(12px,1.8vw,18px);letter-spacing:.3em;text-transform:uppercase;color:var(--sand);margin-bottom:10px}
+#intro .wow b{font-family:var(--head);font-size:clamp(30px,7vw,90px);color:var(--gold2);text-shadow:0 0 50px rgba(242,180,0,.7);letter-spacing:.04em}
+/* ===== nav + HUD ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 3vw}
+nav .logo{font-family:var(--head);font-weight:900;font-size:18px;display:flex;align-items:center;gap:10px;letter-spacing:.08em;text-shadow:0 2px 20px #000}
+nav .logo i{width:28px;height:28px;border-radius:50%;background:url(assets/pfp.jpg) center/cover;display:inline-block;box-shadow:0 0 0 2px var(--gold)}
+nav .links{display:flex;gap:22px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;text-shadow:0 2px 12px #000}
+nav .links a{position:relative}nav .links a::after{content:"";position:absolute;left:0;right:100%;bottom:-4px;height:2px;background:currentColor;transition:right .25s}nav .links a:hover::after{right:0}
+@media(max-width:760px){nav .links{display:none}}
+#ruler{position:fixed;right:22px;top:50%;transform:translateY(-50%);height:min(62vh,560px);width:150px;z-index:100;pointer-events:none;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+@media(max-width:900px){#ruler{display:none}}
+#ruler .line{position:absolute;right:14px;top:0;bottom:0;width:2px;background:linear-gradient(rgba(242,180,0,.15),rgba(242,180,0,.6))}
+#ruler .tk{position:absolute;right:8px;width:14px;height:1px;background:rgba(242,180,0,.5)}
+#ruler .tk span{position:absolute;right:20px;top:-6px;white-space:nowrap;color:var(--mute);transition:color .3s}
+#ruler .tk.done span{color:var(--gold2)}#ruler .tk.next span{color:var(--lapis2)}
+#ruler .you{position:absolute;right:9px;width:12px;height:12px;border-radius:50%;background:var(--cream);box-shadow:0 0 12px #fff;transform:translateY(-50%)}
+#ruler .you span{position:absolute;left:18px;top:0;white-space:nowrap;color:var(--cream)}
+#ruler .him{position:absolute;right:4px;width:22px;height:22px;border-radius:50%;background:url(assets/pfp.jpg) center/cover;box-shadow:0 0 0 2px var(--gold),0 0 20px rgba(242,180,0,.8);transform:translateY(-50%);transition:top 1.5s cubic-bezier(.2,.8,.2,1)}
+#ruler .him span{position:absolute;left:28px;top:4px;white-space:nowrap;color:var(--gold2)}
+#hud{position:fixed;left:3vw;bottom:24px;z-index:100;font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--mute);text-shadow:0 2px 12px #000}
+#hud b{display:block;font-family:var(--head);font-size:26px;color:var(--gold2);letter-spacing:.05em}
+#hint{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:100;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold2);animation:blink 1.6s steps(2) infinite;text-shadow:0 2px 12px #000;opacity:0}
+/* ===== the world: a corridor along z ===== */
+#spacer{position:relative;z-index:1;pointer-events:none}
+#world{position:fixed;inset:0;z-index:3;perspective:820px;perspective-origin:50% 50%;overflow:hidden}
+#cam{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform}
+.wall{position:absolute;top:50%;left:50%;height:100vh;transform-origin:left center;background-color:#120c05;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120' fill='none' stroke='%23f2b400' stroke-opacity='.28' stroke-width='2'><circle cx='30' cy='30' r='10'/><circle cx='30' cy='30' r='3' fill='%23f2b400' fill-opacity='.4'/><path d='M76 44l14-26 14 26z'/><path d='M18 78q12-14 24 0q-12 14-24 0z'/><path d='M74 70h30v30h-30z'/><path d='M60 4v20M52 12h16'/><path d='M4 100l16-6 16 6'/><path d='M100 6l-8 12 16 0z'/></svg>");background-size:120px 120px;box-shadow:inset 0 0 120px rgba(0,0,0,.9);backface-visibility:hidden}
+.wall::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,5,2,.15),rgba(7,5,2,.7) 55%,#070502)}
+#wallR{transform-origin:left center}
+#floor,#ceil{position:absolute;left:50%;top:50%;width:104vw;transform-origin:center top;background:#0c0803;background-image:repeating-linear-gradient(0deg,rgba(242,180,0,.12) 0 2px,transparent 2px 160px),repeating-linear-gradient(90deg,rgba(242,180,0,.08) 0 2px,transparent 2px 200px);backface-visibility:hidden}
+#floor::after,#ceil::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(7,5,2,.25),rgba(7,5,2,.85) 55%,#070502)}
+.ch{position:absolute;left:50%;top:50%;width:min(1100px,90vw);max-height:92vh;overflow:auto;transform:translate(-50%,-50%) translateZ(var(--z));will-change:opacity;backface-visibility:hidden;scrollbar-width:none}
+.ch::-webkit-scrollbar{display:none}
+.ch .in{position:relative;padding:30px;background:rgba(7,5,2,.74);backdrop-filter:blur(10px);border:1px solid rgba(242,180,0,.25);border-radius:12px;box-shadow:0 40px 120px rgba(0,0,0,.8)}
+.ch .in::before{content:attr(data-room);position:absolute;top:-14px;left:26px;background:var(--bk);padding:4px 12px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold2);border:1px solid rgba(242,180,0,.4);border-radius:999px}
+.arch{position:absolute;left:50%;top:50%;width:min(1180px,96vw);height:100vh;transform:translate(-50%,-50%) translateZ(var(--z));pointer-events:none;will-change:opacity;backface-visibility:hidden}
+.arch svg{width:100%;height:100%}
+.arch .slab{transition:transform 1.1s cubic-bezier(.7,0,.3,1)}
+.arch.open .slab{transform:translateY(100%)}
+.arch .lbl{position:absolute;left:50%;top:14%;transform:translateX(-50%);font-family:var(--head);font-size:clamp(12px,1.6vw,18px);letter-spacing:.35em;text-transform:uppercase;color:var(--gold2);text-shadow:0 0 20px rgba(242,180,0,.6);white-space:nowrap}
+/* ===== chamber content ===== */
+.hero h1{font-size:clamp(30px,4.8vw,76px);text-transform:uppercase;color:var(--cream);margin-top:12px}
+.hero h1 .g{color:var(--gold2);text-shadow:0 0 30px rgba(242,180,0,.55);animation:glow 2.6s ease-in-out infinite alternate}
+@keyframes glow{from{text-shadow:0 0 16px rgba(242,180,0,.35)}to{text-shadow:0 0 44px rgba(242,180,0,.9),0 0 90px rgba(242,180,0,.35)}}
+.hero .grid{display:grid;grid-template-columns:1.25fr .75fr;gap:30px;align-items:center}
+@media(max-width:900px){.hero .grid{grid-template-columns:1fr}.hero .pic{display:none}}
+.hero .sub{max-width:560px;margin:20px 0 24px;color:#eee5cc;font-size:15px;border-left:3px solid var(--gold);padding-left:14px}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero .hold{margin-top:26px;display:flex;gap:24px;flex-wrap:wrap}
+.hero .hold b{display:block;font-family:var(--head);font-size:clamp(22px,2.8vw,38px);color:var(--gold2);font-variant-numeric:tabular-nums;text-shadow:0 0 30px rgba(242,180,0,.4)}
+.hero .hold span{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--mute)}
+.hero .pic{position:relative;aspect-ratio:1;border-radius:50%;overflow:hidden;box-shadow:0 0 0 6px var(--gold),0 0 80px rgba(242,180,0,.5);animation:floaty 5s ease-in-out infinite}
+.hero .pic img{width:100%;height:100%;object-fit:cover}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-14px) rotate(2deg)}}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:6px;font-family:var(--head);font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;border:2px solid var(--gold);color:var(--gold2);position:relative;transition:transform .2s,background .2s,color .2s;background:rgba(7,5,2,.5)}
+.btn.gold{background:linear-gradient(135deg,#ffd86b,#f2b400 50%,#c48f00);border-color:#ffd86b;color:#2a1a00;box-shadow:0 0 40px rgba(242,180,0,.35);animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 18px rgba(242,180,0,.25)}50%{box-shadow:0 0 60px rgba(242,180,0,.7)}}
+.btn.ghost:hover{background:var(--gold);color:#2a1a00}
+.h2{font-size:clamp(26px,3.8vw,52px);text-transform:uppercase;color:var(--cream)}
+.h2 .o{color:transparent;-webkit-text-stroke:1.5px var(--gold2)}
+.lead{color:#e6dcc0;max-width:560px;margin:12px 0 20px;font-size:14px}
+/* record */
+.rec-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+@media(max-width:900px){.rec-grid{grid-template-columns:1fr}}
+.rec{background:#efe4c2;color:#221a08;font-family:var(--type);padding:22px 24px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.7),0 0 0 1px #c9b98a inset;transform:rotate(-1.2deg);background-image:repeating-linear-gradient(0deg,transparent 0 27px,rgba(60,40,10,.12) 27px 28px)}
+.rec::before{content:"";position:absolute;left:0;right:0;top:58px;height:2px;background:rgba(200,16,46,.55)}
+.rec h3{font-family:var(--type);font-weight:400;font-size:19px;letter-spacing:.05em;margin-bottom:18px;text-transform:uppercase}
+.rec .row{display:flex;justify-content:space-between;align-items:baseline;line-height:28px;font-size:14px;border-bottom:1px dashed rgba(60,40,10,.25)}
+.rec .row .v{font-weight:700;font-variant-numeric:tabular-nums}.rec .row .v sub{font-size:.6em}
+.rec .row.big .v{font-size:20px;color:#7a4b00}
+.rec .stamp{position:absolute;right:16px;bottom:14px;transform:rotate(-14deg);border:3px solid var(--red);color:var(--red);font-family:var(--head);font-weight:900;font-size:18px;letter-spacing:.2em;padding:5px 10px;opacity:.85;mix-blend-mode:multiply}
+.rec .foot{font-size:11px;margin-top:12px;line-height:1.5;color:#5a4a20}
+.rec .bar{height:8px;background:#d8ccaa;margin:8px 0 2px;position:relative;overflow:hidden}.rec .bar i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--gold3)}
+.pile{position:relative;width:min(360px,70vw);aspect-ratio:1;margin:0 auto}
+.pile .pf{position:absolute;left:50%;top:42%;width:56%;aspect-ratio:1;border-radius:50%;overflow:hidden;transform:translate(-50%,-50%);box-shadow:0 0 0 6px var(--gold),0 0 60px rgba(242,180,0,.55);z-index:2}
+.pile .pf img{width:100%;height:100%;object-fit:cover}
+.pile .aura{position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle,rgba(242,180,0,.5),rgba(242,180,0,.12) 45%,transparent 70%);filter:blur(12px);animation:breathe 3s ease-in-out infinite}
+.pile .ring{position:absolute;inset:-2%;border-radius:50%;border:1px dashed rgba(242,180,0,.5);animation:spin 40s linear infinite}
+.pile .bars{position:absolute;left:0;right:0;bottom:-2%;height:32%;z-index:3}.pile .bars svg{width:100%;height:100%;filter:drop-shadow(0 20px 40px rgba(0,0,0,.6))}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes breathe{0%,100%{transform:scale(.95)}50%{transform:scale(1.06)}}
+/* paintings */
+.paint{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:900px){.paint{grid-template-columns:repeat(2,1fr)}}
+.pt{position:relative;aspect-ratio:16/11;border:6px solid #3a2a12;outline:2px solid var(--gold3);background:#111;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.7);transition:transform .35s}
+.pt:hover{transform:scale(1.04) rotate(-.6deg)}
+.pt img{width:100%;height:100%;object-fit:cover;filter:sepia(.25) contrast(1.05)}
+.pt .cap{position:absolute;left:0;right:0;bottom:0;padding:10px 12px;background:linear-gradient(0deg,rgba(7,5,2,.95),transparent);font-size:12px}
+.pt .cap b{display:block;font-family:var(--type);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);margin-bottom:3px}
+/* stops */
+.stops{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:900px){.stops{grid-template-columns:1fr}}
+.stop{display:grid;grid-template-columns:36px 1fr auto;gap:12px;align-items:center;padding:10px 12px;border:1px solid rgba(242,180,0,.18);border-radius:8px;background:rgba(7,5,2,.5);transition:transform .25s,border-color .25s,background .25s}
+.stop .n{font-family:var(--head);font-weight:900;font-size:16px;color:var(--mute)}
+.stop b{display:block;font-family:var(--head);font-size:12px;letter-spacing:.06em;text-transform:uppercase}.stop span{font-size:11px;color:var(--mute)}
+.stop .st{font-size:9px;letter-spacing:.22em;text-transform:uppercase;padding:5px 9px;border-radius:999px;border:1px solid var(--mute);color:var(--mute)}
+.stop.done{border-color:var(--gold);background:rgba(242,180,0,.1)}.stop.done .n{color:var(--gold2)}.stop.done .st{border-color:var(--gold2);color:var(--gold2)}
+.stop.next{border-color:var(--lapis2);background:rgba(59,109,224,.12);box-shadow:0 0 30px rgba(59,109,224,.25)}.stop.next .n{color:var(--lapis2)}.stop.next .st{border-color:var(--lapis2);color:var(--lapis2)}
+.wi{margin-top:16px;padding:14px 16px;border:1px dashed rgba(242,180,0,.35);border-radius:8px}
+.wi label{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}.wi label b{color:var(--cream);font-size:13px}
+.wi input[type=range]{width:100%;accent-color:var(--gold)}
+.wi button{margin-top:8px;color:var(--gold2);font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.sarc{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;margin-bottom:20px}
+@media(max-width:900px){.sarc{grid-template-columns:1fr}}
+.sarc .big{font-family:var(--head);font-size:clamp(20px,2.6vw,34px);color:var(--gold2);text-shadow:0 0 30px rgba(242,180,0,.5)}
+.sarc .big small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+/* offering */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:900px){.steps{grid-template-columns:1fr}}
+.st3{padding:20px;position:relative;overflow:hidden;border:1px solid rgba(242,180,0,.2);border-radius:8px;background:rgba(7,5,2,.5)}
+.st3::before{content:attr(data-n);position:absolute;right:12px;top:2px;font-family:var(--head);font-weight:900;font-size:56px;color:rgba(242,180,0,.08)}
+.st3 h3{font-size:14px;margin-bottom:8px;text-transform:uppercase;letter-spacing:.08em;color:var(--gold2)}.st3 p{color:#e6dcc0;font-size:13px}
+.cabox{margin-top:22px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:16px 20px;border-radius:999px;border:2px solid var(--gold);background:rgba(242,180,0,.08);position:relative}
+.cabox::before{content:"";position:absolute;inset:5px;border-radius:999px;border:1px solid rgba(242,180,0,.4);pointer-events:none}
+@media(max-width:700px){.cabox{grid-template-columns:1fr;border-radius:20px}}
+.cabox .l{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}.cabox code{font-size:13px;word-break:break-all;color:var(--cream)}
+.cta{margin-top:20px;display:flex;gap:12px;flex-wrap:wrap}
+.fine{margin-top:22px;font-size:11px;color:var(--mute);line-height:1.7;max-width:760px}
+.toast{position:fixed;left:50%;bottom:60px;transform:translate(-50%,20px);background:var(--gold);color:#2a1a00;padding:12px 18px;border-radius:999px;font-family:var(--head);font-size:12px;font-weight:700;letter-spacing:.1em;opacity:0;pointer-events:none;z-index:999;transition:.3s;white-space:nowrap}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+<canvas id="gl"></canvas><div id="vignette"></div><div id="torchlight"></div><canvas id="pc"></canvas><div id="grain"></div><div id="curse"></div>
+<div id="torch"><div class="glow"></div><div class="st"></div><div class="fl"></div></div>
+
+<!-- ===== intro: the sealed door, 1922 ===== -->
+<div id="intro">
+  <canvas id="wall"></canvas>
+  <div class="mask"></div>
+  <div class="tag">valley of the kings · november 1922</div>
+  <button class="skip" id="skip">skip →</button>
+  <div class="q" id="q">can you see anything?<b id="qb">bring the torch closer.</b></div>
+  <div class="door" id="door">
+    <svg viewBox="0 0 300 400" aria-hidden="true">
+      <defs><linearGradient id="stone" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b2a12"/><stop offset="1" stop-color="#16100a"/></linearGradient><linearGradient id="gd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd86b"/><stop offset=".5" stop-color="#c48f00"/><stop offset="1" stop-color="#6b4a00"/></linearGradient></defs>
+      <rect x="10" y="10" width="280" height="380" rx="8" fill="url(#stone)" stroke="#5a4020" stroke-width="4"/>
+      <rect x="30" y="30" width="240" height="340" rx="4" fill="none" stroke="#7a5a2a" stroke-width="2" stroke-dasharray="6 5"/>
+      <g id="cracks" stroke="#ffd86b" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0">
+        <path d="M150 200 L120 150 L110 100 L95 60"/><path d="M150 200 L185 160 L200 110 L230 70"/><path d="M150 200 L130 250 L120 310 L90 360"/><path d="M150 200 L180 260 L210 300 L240 350"/><path d="M150 200 L90 210 L40 190"/><path d="M150 200 L215 215 L265 240"/>
+      </g>
+      <g id="seal"><circle cx="150" cy="200" r="46" fill="url(#gd)" stroke="#6b4a00" stroke-width="3"/><circle cx="150" cy="200" r="34" fill="none" stroke="#6b4a00" stroke-width="2"/><path d="M150 172 v56 M136 186 h28 M132 214 q18 12 36 0" stroke="#4a3000" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M104 200 h-60 M196 200 h60" stroke="#c48f00" stroke-width="6" stroke-linecap="round"/></g>
+    </svg>
+  </div>
+  <div class="yrs">years sealed<b id="ysealed">0</b></div>
+  <div class="hint">tap the seal · break it</div>
+  <div class="flash" id="flash"></div>
+  <div class="wow" id="wow"><small>"can you see anything?"</small><b>"yes. wonderful things."</b></div>
+  <div class="half l"></div><div class="half r"></div>
+</div>
+
+<nav>
+  <a class="logo" href="#0"><i></i>PHARAOH</a>
+  <div class="links"><a href="#1">the record</a><a href="#2">the paintings</a><a href="#3">how deep</a><a href="#4">offer</a><a id="nav-x" href="#" target="_blank" rel="noopener">X</a></div>
+</nav>
+<div id="ruler"><div class="line"></div><div class="you" id="you"><span>you</span></div><div class="him" id="him"><span>him</span></div></div>
+<div id="hud">depth<b id="hudd">0 m</b></div>
+<div id="hint">scroll to go deeper ↓</div>
+
+<div id="spacer"></div>
+
+<div id="world"><div id="cam">
+  <div class="wall" id="wallL"></div><div class="wall" id="wallR"></div><div id="floor"></div><div id="ceil"></div>
+
+  <section class="ch hero" data-i="0"><div class="in" data-room="the steps · 0 m">
+    <div class="grid"><div>
+      <div class="eyebrow">$PHARAOH · paired with $GLD</div>
+      <h1><span style="white-space:nowrap">Buried with</span><br><span class="g" style="white-space:nowrap">110 kg of gold.</span><br><span style="white-space:nowrap">1323 BC.</span> <span class="g" style="white-space:nowrap">Never sold.</span></h1>
+      <p class="sub">they sealed him in with his bags. 3,244 years later a guy with a candle broke the wall — all of it was still there. he hadn't touched it. the longest hold in history, and he's not done.</p>
+      <div class="cta"><a class="btn gold" id="buy1" href="#4">make an offering</a><a class="btn ghost" href="#3">how deep is he</a></div>
+      <div class="hold"><div><b id="hy">0</b><span>years held</span></div><div><b id="hd">0</b><span>days</span></div><div><b id="hs">0</b><span>seconds</span></div><div><b>0</b><span>sold</span></div></div>
+    </div><div class="pic"><img src="assets/pfp.jpg" alt="the pharaoh"></div></div>
+  </div></section>
+  <div class="arch" data-i="0"><span class="lbl">the corridor</span><svg viewBox="0 0 1180 800" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a3416"/><stop offset="1" stop-color="#1a1208"/></linearGradient></defs><path d="M0 0 H1180 V800 H0 Z M180 800 V220 Q180 120 300 120 H880 Q1000 120 1000 220 V800 Z" fill="url(#ar)" fill-rule="evenodd" stroke="#8a5d00" stroke-width="3"/><g class="slab"><path d="M182 800 V222 Q182 124 300 124 H880 Q998 124 998 222 V800 Z" fill="#241809"/><path d="M300 200 h580 M300 300 h580 M300 400 h580 M300 500 h580 M300 600 h580 M300 700 h580" stroke="#3a2a12" stroke-width="2"/></g></svg></div>
+
+  <section class="ch" data-i="1"><div class="in" data-room="the corridor · 22 m">
+    <div class="rec-grid"><div>
+      <div class="eyebrow">excavation record · live · every 30s</div>
+      <h2 class="h2" style="margin-top:10px">The <span class="o">record.</span></h2>
+      <p class="lead">every object in the tomb got a card. this is his. market cap is the gold in the chamber. sells are tomb raiders — the curse takes care of them. buys are offerings — he keeps those.</p>
+      <div class="pile" id="pile"><div class="ring"></div><div class="aura"></div><div class="pf"><img src="assets/pfp.jpg" alt=""></div><div class="bars"><svg viewBox="0 0 400 120" id="barsvg" aria-hidden="true"></svg></div></div>
+    </div>
+    <div class="rec" id="rec">
+      <h3>Object no. 255 · Burial chamber</h3>
+      <div class="row"><span>description</span><span class="v">one pharaoh, fat, holding</span></div>
+      <div class="row"><span>date sealed</span><span class="v">1323 BC</span></div>
+      <div class="row"><span>date found</span><span class="v">26 nov 1922</span></div>
+      <div class="row big"><span>gold in the chamber</span><span class="v" id="k-mcap">—</span></div>
+      <div class="bar"><i id="mcbar"></i></div>
+      <div class="row"><span>price per piece</span><span class="v" id="k-price">—</span></div>
+      <div class="row"><span>traffic · 24h</span><span class="v" id="k-vol">—</span></div>
+      <div class="row"><span>tomb raiders · 24h (sells)</span><span class="v" id="k-sells">—</span></div>
+      <div class="row"><span>offerings · 24h (buys)</span><span class="v" id="k-buys">—</span></div>
+      <div class="row"><span>years held</span><span class="v" id="k-years">3,348</span></div>
+      <div class="row"><span>times sold</span><span class="v">0</span></div>
+      <div class="row big"><span>depth</span><span class="v" id="k-depth">the steps</span></div>
+      <div class="foot" id="src">recorded by hand. source: waiting for the contract address.</div>
+      <div class="stamp">NOT FOR SALE</div>
+    </div></div>
+  </div></section>
+  <div class="arch" data-i="1"><span class="lbl">the antechamber</span><svg viewBox="0 0 1180 800" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 H1180 V800 H0 Z M180 800 V220 Q180 120 300 120 H880 Q1000 120 1000 220 V800 Z" fill="url(#ar)" fill-rule="evenodd" stroke="#8a5d00" stroke-width="3"/><g class="slab"><path d="M182 800 V222 Q182 124 300 124 H880 Q998 124 998 222 V800 Z" fill="#241809"/><path d="M300 200 h580 M300 300 h580 M300 400 h580 M300 500 h580 M300 600 h580 M300 700 h580" stroke="#3a2a12" stroke-width="2"/></g></svg></div>
+
+  <section class="ch" data-i="2"><div class="in" data-room="the antechamber · 41 m">
+    <div class="eyebrow">wall paintings · the excavation log</div>
+    <h2 class="h2" style="margin:10px 0 18px">3,348 years <span class="o">of not selling.</span></h2>
+    <div class="paint" id="paint"></div>
+  </div></section>
+  <div class="arch" data-i="2"><span class="lbl">the burial chamber</span><svg viewBox="0 0 1180 800" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 H1180 V800 H0 Z M180 800 V220 Q180 120 300 120 H880 Q1000 120 1000 220 V800 Z" fill="url(#ar)" fill-rule="evenodd" stroke="#8a5d00" stroke-width="3"/><g class="slab"><path d="M182 800 V222 Q182 124 300 124 H880 Q998 124 998 222 V800 Z" fill="#241809"/><path d="M300 200 h580 M300 300 h580 M300 400 h580 M300 500 h580 M300 600 h580 M300 700 h580" stroke="#3a2a12" stroke-width="2"/></g></svg></div>
+
+  <section class="ch" data-i="3"><div class="in" data-room="the burial chamber · 63 m">
+    <div class="eyebrow">market cap = depth</div>
+    <h2 class="h2" style="margin-top:10px">How deep <span class="o">in the tomb.</span></h2>
+    <div class="sarc"><p class="lead" style="margin:12px 0 0">the market cap carries him down the corridor. every chamber he reaches is a marketing move, paid and executed. the ruler on the right shows where you are — and where he is.</p><div class="big"><small>he is at</small><span id="heat">the steps</span></div></div>
+    <div class="stops" id="stops"></div>
+    <div class="wi"><label>what if the market cap were <b id="wio">$1K</b></label><input type="range" id="wi" min="3" max="7" step="0.01" value="3"><button id="wiclear">reset to live</button></div>
+  </div></section>
+  <div class="arch" data-i="3"><span class="lbl">the treasury</span><svg viewBox="0 0 1180 800" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 H1180 V800 H0 Z M180 800 V220 Q180 120 300 120 H880 Q1000 120 1000 220 V800 Z" fill="url(#ar)" fill-rule="evenodd" stroke="#8a5d00" stroke-width="3"/><g class="slab"><path d="M182 800 V222 Q182 124 300 124 H880 Q998 124 998 222 V800 Z" fill="#241809"/><path d="M300 200 h580 M300 300 h580 M300 400 h580 M300 500 h580 M300 600 h580 M300 700 h580" stroke="#3a2a12" stroke-width="2"/></g></svg></div>
+
+  <section class="ch" data-i="4"><div class="in" data-room="the treasury · 84 m">
+    <div class="eyebrow">how to get in the tomb</div>
+    <h2 class="h2" style="margin:10px 0 20px">Make an <span class="o">offering.</span></h2>
+    <div class="steps">
+      <div class="st3" data-n="1"><h3>get a wallet</h3><p id="walletStep">phantom or solflare. put some SOL in it. that's your torch.</p></div>
+      <div class="st3" data-n="2"><h3>open the launchpad</h3><p>hit the button below, paste the cartouche, pick an amount. that's an offering — he keeps every one.</p></div>
+      <div class="st3" data-n="3"><h3>don't raid</h3><p>every chamber the market cap reaches unlocks a marketing move. sell and you're a tomb raider. the curse has a 100% hit rate.</p></div>
+    </div>
+    <div class="cabox"><div><div class="l">contract address · his cartouche</div><code id="ca">carved at launch. the seal is still on.</code></div><button class="btn ghost" id="copy">copy</button></div>
+    <div class="cta"><a class="btn gold" id="buy2" href="#" target="_blank" rel="noopener">make an offering</a><a class="btn ghost" id="chart" href="#" target="_blank" rel="noopener">chart</a><a class="btn ghost" id="x2" href="#" target="_blank" rel="noopener">X</a><a class="btn ghost" href="#0">back to the steps ↑</a></div>
+    <p class="fine">*the 110 kg is real: the innermost coffin found in 1922 was solid gold, about 110 kg of it, plus a 10 kg mask. the pharaoh on this site is fictional and fat. no museum has been informed. this is a meme coin with a pharaoh on it. · $PHARAOH · paired with $GLD · <a id="x3" href="#" target="_blank" rel="noopener" style="color:var(--gold2)">X</a> · <a id="chart2" href="#" target="_blank" rel="noopener" style="color:var(--gold2)">chart</a> · <a id="buy3" href="#" target="_blank" rel="noopener" style="color:var(--gold2)">offer</a></p>
+  </div></section>
+</div></div>
+<div class="toast" id="toast"></div>
+
+<script src="config.js"></script>
+<script>
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)]; const A=p=>(window.__ASSETS&&window.__ASSETS[p])||p;
+const CFG=Object.assign({CA:"",CHAIN:"solana",PAD:"pumpfun",X:"https://x.com/",BUY:"",CHART:""},window.PHARAOH_CFG||{});
+const sol=CFG.CHAIN!=="robinhood";
+if(!sol){const w=$("#walletStep");if(w)w.textContent="metamask or rabby on robinhood chain. that's your torch.";}
+const PADS={pons:ca=>`https://www.ponsfamily.com/launchpad/${ca}`,pumpfun:ca=>`https://pump.fun/coin/${ca}`,stonkfun:ca=>`https://www.stonkfun.xyz/token/${ca}`};
+const buyUrl=CFG.BUY||(CFG.CA?(PADS[CFG.PAD]||PADS[sol?"pumpfun":"pons"])(CFG.CA):"#4");
+const chartUrl=CFG.CHART||(CFG.CA?(sol?`https://gmgn.ai/sol/token/${CFG.CA}`:`https://dexscreener.com/search?q=${CFG.CA}`):"#1");
+["buy2","buy3"].forEach(id=>$("#"+id).href=buyUrl); if(CFG.CA) $("#buy1").href=buyUrl; ["chart","chart2"].forEach(id=>$("#"+id).href=chartUrl); ["nav-x","x2","x3"].forEach(id=>$("#"+id).href=CFG.X);
+if(CFG.CA) $("#ca").textContent=CFG.CA;
+$("#copy").addEventListener("click",()=>{ if(!CFG.CA){ toast("not yet. the seal is still on."); return; } navigator.clipboard?.writeText(CFG.CA); toast("copied. make your offering."); });
+function toast(t){ const el=$("#toast"); el.textContent=t; el.classList.add("on"); clearTimeout(toast.t); toast.t=setTimeout(()=>el.classList.remove("on"),2600); }
+const fmtUSD=v=>v>=1e9?"$"+(v/1e9).toFixed(2)+"B":v>=1e6?"$"+(v/1e6).toFixed(2)+"M":v>=1e3?"$"+(v/1e3).toFixed(v>=1e5?0:1)+"K":"$"+Math.round(v);
+const fmtP=p=>{ if(!p) return "—"; if(p>=1) return "$"+p.toFixed(2); const s=p.toFixed(10); const m=s.match(/0\.(0*)(\d+)/); if(m&&m[1].length>=3) return `$0.0<sub>${m[1].length}</sub>${m[2].slice(0,4)}`; return "$"+p.toPrecision(3); };
+const fine=matchMedia("(pointer:fine)").matches; gsap.ticker.lagSmoothing(0);
+let mx=innerWidth/2,my=innerHeight/2; addEventListener("pointermove",e=>{mx=e.clientX;my=e.clientY; document.documentElement.style.setProperty("--tx",mx+"px"); document.documentElement.style.setProperty("--ty",my+"px");});
+document.documentElement.style.setProperty("--tx","50vw"); document.documentElement.style.setProperty("--ty","50vh");
+
+/* ===== WebGL background ===== */
+(function(){ const c=$("#gl"); const gl=c.getContext("webgl",{antialias:false,alpha:false}); if(!gl){c.style.background="radial-gradient(circle at 50% 40%,#2a1d0c,#070502)";return;}
+const vs=`attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}`;
+const fs=`precision highp float;uniform float t;uniform vec2 r;uniform vec2 m;uniform float e;uniform float s;
+float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
+float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<4;i++){v+=a*n(p);p=p*2.1+vec2(3.1,7.7);a*=.5;}return v;}
+void main(){vec2 uv=(gl_FragCoord.xy-.5*r)/r.y;vec2 mm=(m-.5*r)/r.y;float tt=t*.05+s*.0004;
+vec2 q=vec2(fbm(uv*1.4+tt),fbm(uv*1.4-tt*.6));float rock=fbm(uv*2.4+q*1.6);
+float vein=smoothstep(.035,0.,abs(fbm(uv*3.2+q*2.+tt*.3)-.5));
+vec3 dark=vec3(.03,.02,.01),brown=vec3(.14,.09,.04),gold=vec3(.95,.70,.05);
+vec3 col=mix(dark,brown,rock);col+=gold*vein*(.25+.2*sin(t*3.+uv.x*10.));
+float d=length(uv-mm*.5);float flick=.85+.15*sin(t*23.)*sin(t*7.3);
+col+=vec3(.9,.55,.1)*smoothstep(.75,0.,d)*.22*flick;col+=gold*e*.9*smoothstep(1.,0.,d);
+float dust=n(uv*40.+vec2(tt*20.,-t*.5))*n(uv*23.-t*.2);col+=gold*step(.62,dust)*.2;
+float vig=smoothstep(1.3,.3,length(uv));col*=vig*.6+.05;
+gl_FragColor=vec4(col,1.);}`;
+function sh(t,src){const s=gl.createShader(t);gl.shaderSource(s,src);gl.compileShader(s);return s;}
+const pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,vs));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,fs));gl.linkProgram(pr);gl.useProgram(pr);
+const b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);const p=gl.getAttribLocation(pr,"p");gl.enableVertexAttribArray(p);gl.vertexAttribPointer(p,2,gl.FLOAT,false,0,0);
+const U=k=>gl.getUniformLocation(pr,k); let energy=0; window.glEnergy=v=>{energy=Math.min(1,energy+v);};
+function rs(){const d=Math.min(devicePixelRatio,1.5)*.5;c.width=innerWidth*d;c.height=innerHeight*d;gl.viewport(0,0,c.width,c.height);} rs(); addEventListener("resize",rs);
+let smx=mx,smy=my; (function loop(){ smx+=(mx-smx)*.06; smy+=(my-smy)*.06; energy*=.97; const d=c.width/innerWidth; gl.uniform1f(U("t"),performance.now()/1000); gl.uniform2f(U("r"),c.width,c.height); gl.uniform2f(U("m"),smx*d,c.height-smy*d); gl.uniform1f(U("e"),energy); gl.uniform1f(U("s"),scrollY); gl.drawArrays(gl.TRIANGLE_STRIP,0,4); requestAnimationFrame(loop); })(); })();
+
+/* ===== particles: dust streams toward you as you descend ===== */
+(function(){ const c=$("#pc"), x=c.getContext("2d"); let W,H,P=[]; function rs(){W=c.width=innerWidth;H=c.height=innerHeight;} rs(); addEventListener("resize",rs);
+for(let i=0;i<110;i++) P.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,z:.3+Math.random()*.7,r:Math.random()*2+.5,vy:(Math.random()-.5)*.3,vx:(Math.random()-.5)*.25,k:Math.random()<.4?1:0,a:Math.random()*Math.PI*2});
+window.spark=(px,py,n=18)=>{for(let i=0;i<n;i++)P.push({x:px,y:py,z:1,r:1.5+Math.random()*2.5,vy:(Math.random()-.5)*7,vx:(Math.random()-.5)*7,k:2,life:1,a:0});};
+window.sandfall=()=>{for(let i=0;i<120;i++)P.push({x:Math.random()*W,y:-10-Math.random()*200,z:1,r:1+Math.random()*1.5,vy:4+Math.random()*5,vx:(Math.random()-.5)*1,k:3,life:1,a:0});};
+let lastS=scrollY; (function loop(){ x.clearRect(0,0,W,H); const dv=scrollY-lastS; lastS=scrollY; const ox=(mx-W/2)*.02, oy=(my-H/2)*.02;
+  for(let i=P.length-1;i>=0;i--){ const p=P[i];
+    if(p.k<2){ p.x+=(p.x-W/2)*dv*.0012*p.z; p.y+=(p.y-H/2)*dv*.0012*p.z; }
+    p.x+=p.vx; p.y+=p.vy; p.a+=.03; if(p.k===2){p.vy+=.14;p.life-=.02;if(p.life<=0){P.splice(i,1);continue;}} if(p.k===3){if(p.y>H+20){P.splice(i,1);continue;}}
+    if(p.k<2&&(p.y<-20||p.y>H+20||p.x<-20||p.x>W+20)){ p.x=W/2+(Math.random()-.5)*W*.6; p.y=H/2+(Math.random()-.5)*H*.6; }
+    const px=p.x+ox*p.z*10, py=p.y+oy*p.z*10; const tw=.6+.4*Math.sin(p.a*3);
+    if(p.k===0){ x.fillStyle=`rgba(255,216,107,${(.25+.5*p.z)*tw})`; x.save(); x.translate(px,py); x.rotate(p.a); x.fillRect(-p.r*p.z,-p.r*p.z*.5,p.r*p.z*2,p.r*p.z); x.restore(); }
+    else if(p.k===1){ x.fillStyle=`rgba(233,216,166,${.12*p.z})`; x.beginPath(); x.arc(px,py,p.r*p.z,0,7); x.fill(); }
+    else if(p.k===2){ x.fillStyle=`rgba(255,216,107,${p.life})`; x.beginPath(); x.arc(px,py,p.r,0,7); x.fill(); }
+    else { x.fillStyle="rgba(233,216,166,.7)"; x.fillRect(px,py,p.r,p.r*2); } }
+  requestAnimationFrame(loop); })(); })();
+
+/* ===== torch cursor ===== */
+const torch=$("#torch"); let cx=mx,cy=my; gsap.ticker.add(()=>{ if(!fine) return; cx+=(mx-cx)*.4; cy+=(my-cy)*.4; torch.style.transform=`translate(${cx-13}px,${cy-13}px)`; });
+
+/* ===== INTRO ===== */
+document.body.style.overflow="hidden";
+const intro=$("#intro"); let introDone=false;
+(function wall(){ const c=$("#wall"), x=c.getContext("2d"); function draw(){ c.width=innerWidth; c.height=innerHeight; x.fillStyle="#0b0804"; x.fillRect(0,0,c.width,c.height); x.strokeStyle="rgba(242,180,0,.55)"; x.fillStyle="rgba(242,180,0,.5)"; x.lineWidth=2; const cell=58; let seed=7; const rnd=()=>{seed=(seed*9301+49297)%233280;return seed/233280;};
+  for(let gy=0;gy<c.height/cell+1;gy++) for(let gx=0;gx<c.width/cell+1;gx++){ const px=gx*cell+cell/2, py=gy*cell+cell/2, k=Math.floor(rnd()*9); x.save(); x.translate(px,py); x.beginPath();
+    if(k===0){x.arc(0,0,12,0,7);x.stroke();x.beginPath();x.arc(0,0,4,0,7);x.fill();} else if(k===1){x.moveTo(-14,10);x.lineTo(0,-14);x.lineTo(14,10);x.closePath();x.stroke();} else if(k===2){x.moveTo(-14,0);x.quadraticCurveTo(0,-16,14,0);x.quadraticCurveTo(0,16,-14,0);x.stroke();x.beginPath();x.arc(0,0,3,0,7);x.fill();} else if(k===3){x.rect(-10,-12,20,24);x.stroke();} else if(k===4){x.moveTo(0,-14);x.lineTo(0,14);x.moveTo(-10,-6);x.lineTo(10,-6);x.moveTo(-6,10);x.lineTo(6,10);x.stroke();} else if(k===5){x.moveTo(-14,12);x.lineTo(-14,-8);x.lineTo(14,-8);x.lineTo(14,12);x.stroke();} else if(k===6){x.arc(0,-4,8,0,7);x.stroke();x.beginPath();x.moveTo(0,4);x.lineTo(0,16);x.moveTo(-8,10);x.lineTo(8,10);x.stroke();} else if(k===7){x.moveTo(-14,-10);x.lineTo(14,-10);x.lineTo(0,14);x.closePath();x.stroke();} else {x.moveTo(-12,0);x.lineTo(12,0);x.moveTo(6,-6);x.lineTo(12,0);x.lineTo(6,6);x.stroke();}
+    x.restore(); } }
+  draw(); addEventListener("resize",draw); })();
+const ys={v:0}; gsap.to(ys,{v:3244,duration:2.6,ease:"power2.out",onUpdate:()=>{const e=$("#ysealed"); if(e) e.textContent=Math.round(ys.v).toLocaleString();}});
+let hint=0; const HINTS=["bring the torch closer.","there's something behind it.","it's all gold.","he's in there. he's fine."]; setInterval(()=>{ if(introDone) return; hint=(hint+1)%HINTS.length; const e=$("#qb"); if(e) e.textContent=HINTS[hint]; },1800);
+function breakSeal(){ if(breakSeal.done) return; breakSeal.done=true; const tl=gsap.timeline();
+  tl.to("#seal",{scale:1.15,transformOrigin:"150px 200px",duration:.12,yoyo:true,repeat:3}).to("#cracks",{opacity:1,duration:.3},"<")
+    .fromTo("#door",{x:0},{x:()=>Math.random()*14-7,y:()=>Math.random()*14-7,duration:.05,repeat:10,yoyo:true},"<")
+    .call(()=>{ const r=$("#door").getBoundingClientRect(); spark(r.left+r.width/2,r.top+r.height/2,50); glEnergy(1); })
+    .to("#flash",{opacity:.95,duration:.08}).to("#flash",{opacity:0,duration:.6})
+    .to("#door, #intro .q, #intro .yrs, #intro .hint, #intro .mask",{opacity:0,duration:.35},"-=.5")
+    .to("#wow",{opacity:1,duration:.5},"-=.2").call(()=>{ spark(innerWidth/2,innerHeight/2,80); },null,"+=.1")
+    .call(openIntro,null,"+=1.6"); }
+intro.addEventListener("pointerdown",e=>{ if(e.target.closest("#skip")) return; breakSeal(); });
+function openIntro(){ if(introDone) return; introDone=true; gsap.killTweensOf(ys); document.body.style.overflow="";
+  $$("#intro .half").forEach(h=>h.style.display="block"); gsap.set("#intro",{background:"transparent"}); gsap.set("#intro > :not(.half)",{opacity:0});
+  gsap.to("#intro .l",{xPercent:-100,duration:.9,ease:"power4.inOut"}); gsap.to("#intro .r",{xPercent:100,duration:.9,ease:"power4.inOut",onComplete:()=>{intro.remove(); gsap.to("#hint",{opacity:1,duration:1,delay:.5}); }}); }
+$("#skip").addEventListener("click",openIntro);
+
+/* ===== THE DESCENT: scroll = walk forward along z ===== */
+const D=1500, SCROLL_PER=1000; const chambers=$$("#world .ch"), arches=$$("#world .arch"); const N=chambers.length;
+function layout(){ $("#spacer").style.height=((N-1)*SCROLL_PER+innerHeight)+"px";
+  const wallLen=D*(N-1)+D*1.6, front=500;
+  const L=$("#wallL"), R=$("#wallR"), F=$("#floor"), C=$("#ceil"); L.style.width=R.style.width=wallLen+"px"; F.style.height=C.style.height=wallLen+"px";
+  L.style.left="0"; L.style.transform=`translateY(-50%) translateZ(${front}px) translateX(-4vw) rotateY(90deg)`; // plane starts at x=-4vw and runs into -z
+  R.style.left="100%"; R.style.transform=`translateY(-50%) translateZ(${front}px) translateX(4vw) rotateY(-90deg) translateX(-100%)`;
+  F.style.transform=`translate(-50%,50vh) translateZ(${front}px) rotateX(90deg)`; C.style.transform=`translate(-50%,-50vh) translateZ(${front}px) rotateX(-90deg) translateY(-100%)`; }
+layout(); addEventListener("resize",layout);
+chambers.forEach((c,i)=>c.style.setProperty("--z",(-i*D)+"px")); arches.forEach((a,i)=>a.style.setProperty("--z",(-(i*D+D*.55))+"px"));
+let camZ=0, camT=0; const DEPTHS=[0,22,41,63,84];
+(function tickWorld(){ camT=Math.min(scrollY/SCROLL_PER,N-1)*D; camZ+=(camT-camZ)*.12; $("#cam").style.transform=`translateZ(${camZ}px)`;
+  chambers.forEach((c,i)=>{ const dz=i*D-camZ; let o=1; if(dz<-140) o=0; else if(dz<0) o=1+dz/140; else if(dz>D*1.6) o=0; else if(dz>D*.9) o=1-(dz-D*.9)/(D*.7); c.style.opacity=o.toFixed(3); c.style.pointerEvents=(dz>-150&&dz<D*.6)?"auto":"none"; c.style.visibility=o<=0?"hidden":"visible"; });
+  arches.forEach((a,i)=>{ const dz=(i*D+D*.55)-camZ; let o=1; if(dz<-100) o=0; else if(dz<0) o=1+dz/100; else if(dz>D*2.2) o=0; else if(dz>D*1.4) o=1-(dz-D*1.4)/(D*.8); a.style.opacity=o.toFixed(3); a.style.visibility=o<=0?"hidden":"visible"; a.classList.toggle("open",dz<D*.62); });
+  const f=camZ/((N-1)*D); $("#hudd").textContent=Math.round(DEPTHS[N-1]*f)+" m"; $("#you").style.top=(f*100)+"%";
+  $("#world").style.perspectiveOrigin=`${50+(mx/innerWidth-.5)*8}% ${50+(my/innerHeight-.5)*6}%`;
+  requestAnimationFrame(tickWorld); })();
+$$('a[href^="#"]').forEach(a=>{ const id=a.getAttribute("href").slice(1); if(!/^\d$/.test(id)) return; a.addEventListener("click",e=>{ e.preventDefault(); window.scrollTo({top:+id*SCROLL_PER,behavior:"smooth"}); }); });
+addEventListener("scroll",()=>{ if(scrollY>80) gsap.to("#hint",{opacity:0,duration:.4}); },{passive:true});
+
+/* ===== hold counter ===== */
+(function tick(){ const t0=Date.UTC(-1323,0,1); const d=Math.max(0,Date.now()-t0); const yrs=Math.floor(d/(365.2425*864e5))-1; $("#hy").textContent=yrs.toLocaleString(); $("#hd").textContent=Math.floor(d/864e5).toLocaleString(); $("#hs").textContent=Math.floor(d/1e3).toLocaleString(); $("#k-years").textContent=yrs.toLocaleString(); setTimeout(tick,1000); })();
+
+/* ===== record card + bars ===== */
+const rec=$("#rec"); gsap.ticker.add(()=>{ if(!fine) return; const r=rec.getBoundingClientRect(); if(r.width===0||r.bottom<0||r.top>innerHeight) return; const x=(mx-r.left)/r.width-.5, y=(my-r.top)/r.height-.5; const inside=Math.abs(x)<.9&&Math.abs(y)<.9; gsap.to(rec,{rotateY:inside?x*12:0,rotateX:inside?-y*12:0,rotate:-1.2,duration:.5,ease:"power2.out",transformPerspective:900}); });
+const barsvg=$("#barsvg"); let barCount=0; function addBar(){ const i=barCount++; const row=Math.floor(i/7), col=i%7; const bx=30+col*50+(row%2)*25, by=90-row*22; const g=document.createElementNS("http://www.w3.org/2000/svg","g"); g.innerHTML=`<path d="M${bx} ${by} l40 0 l6 16 l-52 0 z" fill="#f2b400" stroke="#8a5d00" stroke-width="1.5"/><path d="M${bx+4} ${by+4} h30" stroke="#ffd86b" stroke-width="2"/>`; g.style.opacity=0; barsvg.appendChild(g); gsap.to(g,{opacity:1,duration:.4}); gsap.fromTo(g,{y:-40},{y:0,duration:.5,ease:"bounce.out"}); if(barCount>21){ barsvg.removeChild(barsvg.firstChild); } }
+for(let i=0;i<8;i++) addBar();
+function removeBar(){ if(barsvg.lastChild){ const g=barsvg.lastChild; gsap.to(g,{y:60,opacity:0,duration:.5,ease:"power2.in",onComplete:()=>g.remove()}); barCount=Math.max(0,barCount-1); } }
+function curse(){ gsap.fromTo("#curse",{opacity:0},{opacity:1,duration:.08,yoyo:true,repeat:5}); gsap.fromTo("#world",{x:0},{x:()=>Math.random()*10-5,duration:.05,repeat:8,yoyo:true,onComplete:()=>gsap.set("#world",{x:0})}); sandfall(); }
+function offering(){ glEnergy(.5); const r=$("#pile").getBoundingClientRect(); if(r.width>0&&r.top<innerHeight&&r.bottom>0) spark(r.left+r.width/2,r.top+r.height/2,30); addBar(); }
+
+/* ===== paintings ===== */
+const SC=[["s01-sealed","1323 bc · sealed","they closed the door with everything inside. he was fine with that."],["s02-candle","26 nov 1922 · the candle","a man with a candle looked through a hole. gold everywhere. he waved."],["s03-raiders","the raiders","every tomb in the valley got robbed. his got 3,244 years of peace."],["s04-museum","the museum","behind glass. 8 million visitors a year. not one of them got a bar."],["s05-desk","the desk","gold at all-time highs. big red button. never pressed it once."],["s06-throne","today","still holding. still fat. still not selling."]];
+$("#paint").innerHTML=SC.map(([f,t,c])=>`<div class="pt"><img src="${A("assets/"+f+"-t.jpg")}" alt="" loading="lazy"><div class="cap"><b>${t}</b>${c}</div></div>`).join("");
+
+/* ===== depth = milestones ===== */
+const M=[[1e4,"the steps","dexscreener profile paid"],[2.5e4,"the corridor","dex boosts on"],[5e4,"the antechamber","trending push: boosts + dextools"],[1e5,"the annex","first KOLs onboarded"],[2.5e5,"the burial chamber","coingecko + coinmarketcap listings"],[5e5,"the sarcophagus","a famous name posts him"],[1e6,"the gold coffin","billboard in a real city"],[1e7,"the treasury","tier-1 CEX listing"]];
+const frac=mc=>mc<=1000?0:Math.min(1,(Math.log10(mc)-3)/4); const stopIndex=mc=>M.filter(([v])=>v<=mc).length;
+const ruler=$("#ruler"); M.forEach(([mc,t])=>{ const d=document.createElement("div"); d.className="tk"; d.style.top=(frac(mc)*100)+"%"; d.innerHTML=`<span>${t}</span>`; ruler.appendChild(d); });
+$("#stops").innerHTML=M.map(([mc,t,u],i)=>`<div class="stop"><div class="n">${String(i+1).padStart(2,"0")}</div><div><b>${t}</b><span>${fmtUSD(mc)} · ${u}</span></div><span class="st">SEALED</span></div>`).join("");
+let mcapNow=0, buys24=null, sells24=null, prevSells=null, prevBuys=null; const passedSet=new Set();
+function placeHim(f){ $("#him").style.top=(f*100)+"%"; }
+function markStops(k){ $$(".stop").forEach((el,i)=>{ el.classList.toggle("done",i<k); el.classList.toggle("next",i===k); $(".st",el).textContent=i<k?"OPENED":i===k?"NEXT":"SEALED"; }); $$("#ruler .tk").forEach((el,i)=>{ el.classList.toggle("done",i<k); el.classList.toggle("next",i===k); }); const lbl=k===0?"the steps":M[k-1][1]; $("#k-depth").textContent=lbl; $("#heat").textContent=lbl; }
+function setState(mc){ const k=stopIndex(mc); markStops(k); placeHim(frac(mc)); $("#k-mcap").textContent=mc>0?fmtUSD(mc):"—"; gsap.to("#mcbar",{width:(frac(mc)*100)+"%",duration:1.2});
+  if(mcapNow>0){ let top=null; M.forEach(x=>{ if(x[0]<=mc&&!passedSet.has(x[0])){ passedSet.add(x[0]); top=x; } }); if(top){ toast(`${top[1]} opened. ${top[2]}.`); glEnergy(1); spark(innerWidth/2,innerHeight/2,70); } } else M.forEach(([v])=>{ if(v<=mc) passedSet.add(v); });
+  mcapNow=mc; }
+markStops(0); placeHim(0);
+const wi=$("#wi"); wi.addEventListener("input",()=>{ const mc=Math.pow(10,+wi.value); $("#wio").textContent=fmtUSD(mc); if(+wi.value>3.01){ markStops(stopIndex(mc)); placeHim(frac(mc)); } });
+$("#wiclear").addEventListener("click",()=>{ wi.value=3; $("#wio").textContent="$1K"; markStops(stopIndex(mcapNow)); placeHim(frac(mcapNow)); });
+
+/* ===== live stats ===== */
+function countTo(el,val,fmt){ const o={v:0}; gsap.to(o,{v:val,duration:1.4,ease:"power3.out",onUpdate:()=>el.textContent=fmt(o.v)}); }
+function paint(price,mcap,vol,src,tx){ price=+price||0; mcap=+mcap||0; buys24=tx?.buys??tx?.h24?.buys??null; sells24=tx?.sells??tx?.h24?.sells??null;
+  $("#k-price").innerHTML=fmtP(price); $("#k-vol").textContent=fmtUSD(vol||0); countTo($("#k-buys"),buys24??0,v=>buys24==null?"—":Math.round(v).toLocaleString()); countTo($("#k-sells"),sells24??0,v=>sells24==null?"—":Math.round(v).toLocaleString());
+  if(prevSells!=null&&sells24>prevSells){ curse(); const n=Math.min(4,sells24-prevSells); for(let i=0;i<n;i++) setTimeout(removeBar,i*220); }
+  if(prevBuys!=null&&buys24>prevBuys){ const n=Math.min(4,buys24-prevBuys); for(let i=0;i<n;i++) setTimeout(offering,i*220); } prevSells=sells24; prevBuys=buys24;
+  $("#src").textContent=`recorded by hand. source: ${src} · updates every 30s`; setState(mcap); }
+async function stats(){ if(!CFG.CA) return; try{ const r=await fetch(`https://api.dexscreener.com/latest/dex/tokens/${CFG.CA}`); const j=await r.json(); const p=(j.pairs||[]).sort((a,b)=>(b.liquidity?.usd||0)-(a.liquidity?.usd||0))[0]; if(p){ paint(p.priceUsd,p.fdv??p.marketCap,p.volume?.h24,"dexscreener",p.txns?.h24); return; } }catch(e){}
+  try{ const net=sol?"solana":"robinhood"; const r=await fetch(`https://api.geckoterminal.com/api/v2/networks/${net}/tokens/${CFG.CA}/pools?page=1`); const j=await r.json(); const p=j.data?.[0]?.attributes; if(p) paint(p.base_token_price_usd,p.fdv_usd??p.market_cap_usd,p.volume_usd?.h24,"geckoterminal",p.transactions?.h24); }catch(e){} }
+stats(); setInterval(stats,30000); setInterval(()=>{ if(!CFG.CA){ if(Math.random()<.6) offering(); else if(Math.random()<.3) removeBar(); } },5000);
+
+/* ===== scramble headings when you arrive + magnetic buttons ===== */
+function scramble(el){ const txt=el.dataset.t||(el.dataset.t=el.textContent); const CH="ABCDEFGHIJKLMNOPQRSTUVWXYZ☥"; let f=0; const n=14; const iv=setInterval(()=>{ f++; el.textContent=txt.split("").map((c,i)=>c===" "?" ":i<txt.length*f/n?c:CH[Math.floor(Math.random()*CH.length)]).join(""); if(f>=n){ clearInterval(iv); el.textContent=txt; } },40); }
+let lastIdx=-1; setInterval(()=>{ const idx=Math.round(camZ/D); if(idx!==lastIdx){ lastIdx=idx; const o=$(`.ch[data-i="${idx}"] .o`); if(o) scramble(o); } },200);
+$$(".btn").forEach(b=>{ b.addEventListener("pointermove",e=>{ const r=b.getBoundingClientRect(); gsap.to(b,{x:(e.clientX-r.left-r.width/2)*.2,y:(e.clientY-r.top-r.height/2)*.3,duration:.3}); }); b.addEventListener("pointerleave",()=>gsap.to(b,{x:0,y:0,duration:.5,ease:"elastic.out(1,.4)"})); });
+</script>
+</body>
+</html>
